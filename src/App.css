@@ -1,0 +1,157 @@
+/* * { 
+  margin: 0;
+  padding: 0;
+  box-sizing:border-box;
+}
+ */
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #F5F7FB;
+  color: #293264;
+  margin: 0;
+  min-height: 100vh;
+}
+
+
+button {
+  background: #4D5B9E;
+  border-radius: 15px;
+  color: #F5F7FB;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+hr {
+  border: 0.8px solid #DBDEF0;
+  margin-top: 15px;
+}
+
+
+/* .App {
+  position:relative;
+  overflow: hidden;
+  height: 100vh;
+
+} */
+
+.quize-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  /* align-items: center; */
+  width: 85%;
+  margin: auto;
+  padding: 40px 0;
+}
+
+.quize-container__item {
+  min-width: 350px;
+}
+
+.quize-container__answers-block {
+  display: flex;
+  /* justify-content: space-between; */
+  padding: 4px;
+
+}
+
+.quize-container__answer {
+
+  padding: 4px 8px;
+  margin-right: 13px;
+
+border: 0.8px solid #4D5B9E;
+border-radius: 8px;
+font-weight: 500;
+/* font-size: 11px; */
+line-height: 1;
+
+}
+
+.quize-container__button {
+  align-self: center;
+  margin-top: 20px;
+  
+
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 13px;
+  width: 150px;
+  height: 40px;
+  border-radius: 10px;
+   
+}
+
+
+
+.bloop-one {
+  z-index: -1;
+  right: -60px;
+  top: -60px;
+  border-radius: 39% 61% 63% 37% / 55% 40% 60% 45%;
+
+position: fixed;
+
+/* Lemony - medium */
+background: #FFFAD1;
+transform: rotate(-128.49deg);
+
+
+height: 235px;
+width: 297px;
+
+} 
+
+.bloop-two {
+  z-index: -1;
+  left: -60px;
+  bottom: -60px;
+  border-radius: 82% 43% 64% 65% / 68% 75% 55% 45%;
+
+position: fixed;
+
+/* baby - medium */
+background: #DEEBF8;
+transform: rotate(10.5deg);
+
+
+height: 235px;
+width: 297px;
+
+} 
+
+
+.start-screen {
+  /* position: relative;
+  overflow: hidden; */
+  /* text-align: center; */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.start-screen__button {
+  width: 193px;
+  height: 52px;
+  margin-top: 29px;
+  
+
+font-weight: 500;
+font-size: 16px;
+line-height: 19px;
+}
+
+.start-screen__description {
+  /* font-family: 'Inter';
+  font-style: normal; */
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+
+  color: #293264;
+}
