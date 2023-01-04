@@ -46,6 +46,12 @@ hr {
   padding: 40px 0;
 }
 
+@media (min-width: 1250px) {
+  .quize-container {
+    width: 55%;
+  }
+}
+
 .quize-container__item {
   min-width: 350px;
 }
@@ -150,7 +156,6 @@ height: 235px;
 width: 297px;
 
 } 
-
 
 .start-screen {
   /* position: relative;

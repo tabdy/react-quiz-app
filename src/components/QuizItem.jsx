@@ -1,28 +1,29 @@
 import React from "react";
-// Module for converting special characters into normal
+// Module for converting special characters into normal html entities
 import {decode} from 'html-entities'
 
 function QuizItem(props) {
-  const [randomIndexArr, setRandomIndexArr] = React.useState(() => randomAnswer())
-  const answers = [...props.incorrectAnswers, props.correctAnswer]
+  const CombinedAnswers = [...props.incorrectAnswers, props.correctAnswer]
+  const [answers, setAnswers] = React.useState(() => shuffle(CombinedAnswers))
   const [chosenAnswer, setChosenAnswer] = React.useState("")
-  console.log(chosenAnswer)
+  // console.log(chosenAnswer)
 
-  function randomAnswer() {
+  function shuffle(array) {
+    let lastUnshuffledIndex = array.length;
+    let randomIndex;
+    let valueHolder;
 
-    const indexNum = []
-    while (indexNum.length < 4) {
-      let randomNum = Math.floor(Math.random() * 5)
-      if (indexNum.every(num => randomNum !== num)) {
-        indexNum.push(randomNum)
-      }
+    while (lastUnshuffledIndex) {
+      randomIndex = Math.floor(Math.random() * lastUnshuffledIndex--)
+      valueHolder = array[lastUnshuffledIndex]
+      array[lastUnshuffledIndex] = array[randomIndex]
+      array[randomIndex] = valueHolder
     }
-    return indexNum;
-
+  
+    return array;
   }
 
-  function buttonPressed(i) {
-    // console.log("pressed", i)
+  function onAnswerChoice(i) {
     setChosenAnswer(answers[i])
     // console.log(props.id, answers[i])
     props.setChosen(props.id, answers[i])
@@ -31,6 +32,7 @@ function QuizItem(props) {
   const AnswersОptions = answers.map((answer, i) => (
     <button
     key={i}
+    disabled={props.isFinished ? "true" : ""}
     className={'quize-container__answer' + 
       (chosenAnswer === answer ? ' quize-container__answer_selected' : '')
       +
@@ -38,21 +40,16 @@ function QuizItem(props) {
       +
       (props.isFinished && props.correctAnswer === answer ? ' quize-container__correct-answer' : '')
     }
-    onClick={(e) => buttonPressed(i)}>{decode(answer)}
+    onClick={(e) => onAnswerChoice(i)}>{decode(answer)}
     </button>
   ))
   
   
-
     return (
         <div className='quize-container__item'>
         <h2>{decode(props.question)}</h2>
         <div className='quize-container__answers-block'>
         {AnswersОptions}
-          {/* <div className='quize-container__answer'>{decode(answers[0])}</div>
-          <div className='quize-container__answer'>{decode(answers[1])}</div>
-          <div className='quize-container__answer'>{decode(answers[2])}</div>
-          <div className='quize-container__answer'>{decode(answers[3])}</div> */}
         </div>
         <hr />
       </div>

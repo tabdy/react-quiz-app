@@ -61,6 +61,13 @@ function App() {
 
   }
 
+  function startOver() {
+    setIsStarted(false)
+    setQuizData([])
+    setQuizResult("")
+    setIsFinished(false)
+  }
+
 
   return (
     <div className="App">
@@ -87,7 +94,9 @@ function App() {
           {quizBlocks}
           <div className='quize-container__check-results'>
             {quizResult !== "" && <h3>{quizResult}</h3>}
-            <button className='quize-container__button' onClick={checkAnswers}>Check answers</button>
+            <button className='quize-container__button' onClick={!isFinished ? checkAnswers : startOver}>
+              {isFinished ? 'Play again' : 'Check answers'}
+            </button>
           </div>
         </div>
       }
